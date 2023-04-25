@@ -28,7 +28,9 @@ class RulesFragment : Fragment() {
 
     fun goToSelectCategoryFragment(view: View){
 
-
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment, SelectCategoryFragment.newInstance())
+            .commit()
 
     }
 }

@@ -13,14 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment, StartPageFragment.newInstance()).commit()
+
         window.navigationBarColor = resources.getColor(R.color.pink)
-        binding.playButton.setOnClickListener(::goToSelectCategoryActivity)
-    }
-
-    private fun goToSelectCategoryActivity(view:View){
-
-        val intent = Intent(this, RulesActivity::class.java)
-        startActivity(intent)
-
     }
 }

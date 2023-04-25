@@ -26,7 +26,7 @@ class RulesFragment : Fragment() {
         fun newInstance() = RulesFragment()
     }
 
-    fun goToSelectCategoryFragment(view: View){
+    private fun goToSelectCategoryFragment(view: View){
 
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment, SelectCategoryFragment.newInstance())

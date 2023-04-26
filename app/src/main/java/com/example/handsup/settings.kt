@@ -8,3 +8,4 @@ const val playTimeOneHundredTwelveSecond = 120
 public var playTime = playTimeSixtySecond
 public var preparationTime = 3
 public var answerAnimationTime = 1
+public var isUseAccelerometer = false

@@ -36,6 +36,13 @@ class SettingsFragment : Fragment() {
             binding.ninetySecond.id -> playTime = playTimeNinetySecond
             binding.oneHundredTwelveSecond.id -> playTime = playTimeOneHundredTwelveSecond
         }
+
+        when(binding.isAccelerometerUsed.checkedRadioButtonId){
+            binding.yesUseAccelerometr.id -> isUseAccelerometer = true
+            binding.noDontUseAccelerometr.id -> isUseAccelerometer = false
+        }
+
+
         backToSelectCategoryFragment()
     }
 

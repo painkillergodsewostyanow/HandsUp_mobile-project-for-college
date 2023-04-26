@@ -1,15 +1,14 @@
 package com.example.handsup
 
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import com.example.handsup.databinding.FragmentSelectCategoryBinding
 
+@Suppress("DEPRECATION")
 class SelectCategoryFragment : Fragment() {
     private lateinit var binding: FragmentSelectCategoryBinding
     lateinit var category:Category
@@ -44,7 +43,7 @@ class SelectCategoryFragment : Fragment() {
         binding.different.setOnClickListener(::choseCategory)
     }
 
-    private fun choseCategory(view: View){
+    public fun choseCategory(view: View){
         when(view.id){
             binding.natureCategory.id ->  category = nature
             binding.artCategory.id -> category = atr

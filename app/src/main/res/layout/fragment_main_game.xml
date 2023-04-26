@@ -76,4 +76,16 @@
         app:layout_constraintTop_toTopOf="@+id/top"
         app:layout_constraintVertical_bias="0.909" />
 
+    <TextView
+        android:id="@+id/TESTACCEL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.705"
+        app:layout_constraintStart_toEndOf="@+id/wordView"
+        app:layout_constraintTop_toTopOf="@+id/top"
+        app:layout_constraintVertical_bias="0.334" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

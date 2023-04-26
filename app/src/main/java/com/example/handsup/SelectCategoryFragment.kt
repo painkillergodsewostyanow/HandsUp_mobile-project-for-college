@@ -59,9 +59,5 @@ class SelectCategoryFragment : Fragment() {
         startActivity(intent)
 
     }
-    override fun onResume() {
-        super.onResume()
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-    }
 
 }

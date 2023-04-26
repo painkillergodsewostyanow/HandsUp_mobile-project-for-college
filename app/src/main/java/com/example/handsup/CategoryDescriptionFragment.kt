@@ -3,6 +3,7 @@ package com.example.handsup
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,10 +18,10 @@ class CategoryDescriptionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         binding =  FragmentCategoryDescriptionBinding.inflate(inflater, container, false)
         binding.description.text = category.description
         binding.backButton.setOnClickListener(::onBackPressed)
+        binding.nextButton.setOnClickListener(::startGame)
         return binding.root
     }
 
@@ -42,6 +43,15 @@ class CategoryDescriptionFragment : Fragment() {
     private fun onBackPressed(view:View){
 
         activity?.onBackPressed()
+
+    }
+
+    private fun startGame(view:View){
+        Log.d("TAGTAG", "LOGLOG")
+
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.gameFragments, MainGameFragment.newInstance(category)).commit()
 
     }
 }

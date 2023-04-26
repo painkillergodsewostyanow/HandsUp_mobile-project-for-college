@@ -57,7 +57,10 @@ class SelectCategoryFragment : Fragment() {
         val intent = Intent(activity, Game::class.java)
         intent.putExtra(Game.CATEGORY, category)
         startActivity(intent)
-
+    }
+    override fun onResume() {
+        super.onResume()
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.handsup
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,5 +32,9 @@ class RulesFragment : Fragment() {
         val intent = Intent(activity, BeforeGame::class.java)
         startActivity(intent)
 
+    }
+    override fun onResume() {
+        super.onResume()
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 }

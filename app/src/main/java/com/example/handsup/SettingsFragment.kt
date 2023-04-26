@@ -70,4 +70,9 @@ class SettingsFragment : Fragment() {
             .commit()
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
 }

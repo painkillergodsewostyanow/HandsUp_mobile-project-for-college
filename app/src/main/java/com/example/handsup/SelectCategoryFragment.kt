@@ -1,6 +1,7 @@
 package com.example.handsup
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -43,7 +44,7 @@ class SelectCategoryFragment : Fragment() {
         binding.different.setOnClickListener(::choseCategory)
     }
 
-    public fun choseCategory(view: View){
+    private fun choseCategory(view: View){
         when(view.id){
             binding.natureCategory.id ->  category = nature
             binding.artCategory.id -> category = atr
@@ -57,6 +58,10 @@ class SelectCategoryFragment : Fragment() {
         intent.putExtra(Game.CATEGORY, category)
         startActivity(intent)
 
+    }
+    override fun onResume() {
+        super.onResume()
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
 }

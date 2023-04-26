@@ -16,10 +16,7 @@
             android:name=".Game"
             android:exported="false" />
         <activity
-            android:name=".RulesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SelectCategoryActivity"
+            android:name=".BeforeGame"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

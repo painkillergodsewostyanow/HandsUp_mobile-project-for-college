@@ -1,8 +1,10 @@
 package com.example.handsup
 
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-class Category(var words: ArrayList<String>, var description: String):Serializable {}
+
+data class Category(var words: ArrayList<String>, var description: String):Serializable {}
 
 public val cinemaAndAnimations = Category(
     arrayListOf("Головоломка", "Титаник", "Форсаж",

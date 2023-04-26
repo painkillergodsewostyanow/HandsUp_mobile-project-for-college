@@ -1,5 +1,6 @@
 package com.example.handsup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +18,7 @@ class StartPageFragment : Fragment() {
 
     ): View {
         binding = FragmentStartPageBinding.inflate(inflater, container, false)
-        binding.playButton.setOnClickListener(::goToSelectCategoryFragment)
+        binding.playButton.setOnClickListener(::goToGame)
         return binding.root
 
 
@@ -28,11 +29,12 @@ class StartPageFragment : Fragment() {
         fun newInstance() = StartPageFragment()
     }
 
-    private fun goToSelectCategoryFragment(view:View) {
+    private fun goToGame(view:View) {
 
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment, RulesFragment.newInstance())
             .commit()
+
 
     }
 

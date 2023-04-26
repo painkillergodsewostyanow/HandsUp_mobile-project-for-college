@@ -15,4 +15,7 @@
     <string name="ninetySecond">90s</string>
     <string name="oneHundredAndTwelveSecond">120s</string>
     <string name="results">Результаты</string>
+    <string name="save">Сохранить</string>
+    <string name="nextButton">Далее</string>
+    <string name="backButton">Назад</string>
 </resources>

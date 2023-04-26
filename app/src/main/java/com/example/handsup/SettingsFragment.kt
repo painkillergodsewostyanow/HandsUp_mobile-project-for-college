@@ -1,11 +1,14 @@
 package com.example.handsup
 
+import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import com.example.handsup.databinding.FragmentSettingsBinding
 
 
@@ -33,9 +36,30 @@ class SettingsFragment : Fragment() {
             binding.ninetySecond.id -> playTime = playTimeNinetySecond
             binding.oneHundredTwelveSecond.id -> playTime = playTimeOneHundredTwelveSecond
         }
+        backToSelectCategoryFragment()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true)
+            {
+                override fun handleOnBackPressed() {
+
+                    backToSelectCategoryFragment()
+
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
+    }
+
+    private fun backToSelectCategoryFragment(){
 
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment, SelectCategoryFragment.newInstance())
+            .replace(R.id.gamePlaceholder, SelectCategoryFragment.newInstance())
             .commit()
 
     }

@@ -1,12 +1,12 @@
 package com.example.handsup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.handsup.databinding.FragmentRulesBinding
-import com.example.handsup.databinding.FragmentStartPageBinding
 
 
 class RulesFragment : Fragment() {
@@ -17,7 +17,7 @@ class RulesFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentRulesBinding.inflate(inflater, container, false)
-        binding.closeButton.setOnClickListener(::goToSelectCategoryFragment)
+        binding.closeButton.setOnClickListener(::startGame)
         return binding.root
     }
 
@@ -26,11 +26,10 @@ class RulesFragment : Fragment() {
         fun newInstance() = RulesFragment()
     }
 
-    private fun goToSelectCategoryFragment(view: View){
+    private fun startGame(view: View){
 
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment, SelectCategoryFragment.newInstance())
-            .commit()
+        val intent = Intent(activity, BeforeGame::class.java)
+        startActivity(intent)
 
     }
 }

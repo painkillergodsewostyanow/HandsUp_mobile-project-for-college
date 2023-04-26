@@ -76,7 +76,7 @@ class GameResultActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
 }

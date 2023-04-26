@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getSystemService
 import com.example.handsup.databinding.FragmentMainGameBinding
@@ -36,21 +37,24 @@ class MainGameFragment : Fragment() {
     private lateinit var gameTimer: CountDownTimer
     private lateinit var preparetionTimer: CountDownTimer
     private lateinit var animationTimer: CountDownTimer
+    private lateinit var buttonMiss:Button
+    private lateinit var buttonRight:Button
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainGameBinding.inflate(inflater, container, false)
-
+        buttonRight = binding.Right
+        buttonMiss = binding.Miss
         categoryWords = category.words.toMutableList()
-        binding.TestMiss.setOnClickListener(::missForButton)
-        binding.TestRight.setOnClickListener(::rightForButton)
+        buttonMiss.setOnClickListener(::missForButton)
+        buttonRight.setOnClickListener(::rightForButton)
         content = binding.wordView
         timerView = binding.timerView
 
         if (isUseAccelerometer){
-            binding.TestMiss.visibility = View.GONE
-            binding.TestRight.visibility = View.GONE
+            buttonMiss.visibility = View.GONE
+            buttonRight.visibility = View.GONE
             sm = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
             s = sm.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
             categoryDescription = category.description
@@ -113,8 +117,9 @@ class MainGameFragment : Fragment() {
     }
     private fun showResult(){
 
-        content.text = "RESULT"
-        binding.Screen.setBackgroundColor(Color.rgb(249, 183, 107))
+        val intent = Intent(activity, GameResultActivity::class.java)
+        intent.putExtra(GameResultActivity.GUESSED_AND_NOT_GUESSED_WORDS, ArrayList(guessedAndNotGuessedWords))
+        startActivity(intent)
 
     }
 
@@ -165,7 +170,12 @@ class MainGameFragment : Fragment() {
             }
 
             override fun onFinish() {
-
+                binding.Screen.setBackgroundColor(Color.rgb(249, 183, 107))
+                binding.top.visibility = View.GONE
+                buttonMiss.visibility = View.GONE
+                buttonRight.visibility = View.GONE
+                binding.timerView.visibility = View.GONE
+                content.text = "Время вышло !!!"
                 showResult()
 
             }
@@ -191,6 +201,8 @@ class MainGameFragment : Fragment() {
         val topImage = binding.top
         val backgroundColor: Int
         val message: String
+        buttonMiss.visibility = View.GONE
+        buttonRight.visibility = View.GONE
         if (isMiss) {
 
             backgroundColor = Color.rgb(230, 0, 126)
@@ -216,6 +228,8 @@ class MainGameFragment : Fragment() {
 
                 screen.setBackgroundColor(defaultBackground)
                 topImage.visibility = View.VISIBLE
+                buttonRight.visibility = View.VISIBLE
+                buttonMiss.visibility = View.VISIBLE
                 content.text = startContent
                 animationIsOverFlag = 1 // - is over
 

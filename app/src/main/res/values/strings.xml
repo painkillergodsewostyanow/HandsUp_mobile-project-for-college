@@ -21,4 +21,7 @@
     <string name="useAccelerometer">Использовать Акселерометр</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+    <string name="retry">Повторить</string>
+    <string name="right">Правильно</string>
+    <string name="miss">Неверно</string>
 </resources>

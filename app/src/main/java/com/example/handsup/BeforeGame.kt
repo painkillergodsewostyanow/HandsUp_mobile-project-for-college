@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.example.handsup.databinding.ActivityBeforeGameBinding
 
-class BeforeGame : AppCompatActivity() {
+class BeforeGame : AppCompatActivityWithHideSystemUI() {
     private lateinit var binding: ActivityBeforeGameBinding
 
 
@@ -23,15 +23,5 @@ class BeforeGame : AppCompatActivity() {
             .beginTransaction()
             .replace(com.example.handsup.R.id.gamePlaceholder, SelectCategoryFragment.newInstance()).commit()
         hideSystemUI()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.R)
-    private fun hideSystemUI() {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowInsetsControllerCompat(window,
-            window.decorView.findViewById(R.id.content)).let { controller ->
-            controller.hide(WindowInsetsCompat.Type.systemBars())
-            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        }
     }
 }

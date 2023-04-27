@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.example.handsup.databinding.ActivityGameResultBinding
 
 
-class GameResultActivity : AppCompatActivity() {
+class GameResultActivity : AppCompatActivityWithHideSystemUI() {
     private lateinit var bindingClass: ActivityGameResultBinding
     companion object{
 
@@ -65,15 +65,6 @@ class GameResultActivity : AppCompatActivity() {
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.R)
-    private fun hideSystemUI() {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowInsetsControllerCompat(window,
-            window.decorView.findViewById(android.R.id.content)).let { controller ->
-            controller.hide(WindowInsetsCompat.Type.systemBars())
-            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        }
-    }
     override fun onResume() {
         super.onResume()
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

@@ -228,8 +228,10 @@ class MainGameFragment : Fragment() {
 
                 screen.setBackgroundColor(defaultBackground)
                 topImage.visibility = View.VISIBLE
-                buttonRight.visibility = View.VISIBLE
-                buttonMiss.visibility = View.VISIBLE
+                if (!isUseAccelerometer){
+                    buttonRight.visibility = View.VISIBLE
+                    buttonMiss.visibility = View.VISIBLE
+                }
                 content.text = startContent
                 animationIsOverFlag = 1 // - is over
 
